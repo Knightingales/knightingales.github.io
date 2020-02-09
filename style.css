@@ -1,0 +1,26 @@
+.image
+{
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+.traveler-input {
+	-border-color: green;
+   background-color:rgba(0,0,0,0) !important;
+   border:none !important;
+   font-size: 30pt;
+   color: green;
+}
+
+.font-size-lg { font-size: 6rem; }
+
+.traveler-tbl
+{
+	margin: 3em;
+}
+
+.traveler-button {
+	background-color: green;
+	border: 0px;
+}

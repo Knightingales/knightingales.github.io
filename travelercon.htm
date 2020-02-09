@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-database.js"></script>
+		<script src = "update.js"></script>
+	</head>
+	<body>
+		<img src = "https://vignette.wikia.nocookie.net/criticalrole/images/7/73/Critical_Role_Logo.png/revision/latest/scale-to-width-down/340?cb=20151211101058" class = "image"/>
+		<div class="container h-100">
+			<div class="row align-items-center h-100">
+				<div class="col-11 mx-auto">
+					<h1 class = "font-size-lg"><span class = "text-success">When</span> is traveler con?</h1>
+					<div class = "container traveler-tbl">
+						<div class = "row">
+							<div class = "col-10">
+								<input id = "when" class="text-success form-control-lg form-control form-rounded traveler-input" />
+							</div>
+							<div class = "col">
+								<input type = "button" id = "submit"  value = "submit" class = "input-lg btn btn-success" />
+							</div>
+						</div>
+					</div>
+					<div id = "last-5"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
