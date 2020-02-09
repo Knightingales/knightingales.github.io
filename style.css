@@ -1,8 +1,10 @@
+        
 .image
 {
 	position: absolute;
 	bottom: 0px;
 	right: 0px;
+	opacity: 0.2;
 }
 
 .traveler-input {
@@ -14,6 +16,14 @@
 }
 
 .font-size-lg { font-size: 6rem; }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px)
+{
+	.font-size-lg
+	{
+		font-size: 5em;
+	}
+}
 
 .traveler-tbl
 {
