@@ -1,24 +1,24 @@
 function last(data)
 {
-	if (last_five.length == 5)
+	if (last_five.length == 10)
 	{
 		last_five.shift();
 	}
-	
+
 	if ((last_five.length == 0) || ((last_five.length > 0) && (last_five[last_five.length - 1] != data)))
 	{
 		last_five.push(data);
 	}
-	
+
 	$("#last-5").empty();
-	
+
 	for (var i in last_five)
 	{
 		var word = last_five[last_five.length - i - 1];
-		
+
 		var res = document.createElement("div");
 		res.innerText = word;
-		
+
 		$("#last-5").append(res);
 	}
 }
@@ -27,16 +27,22 @@ function set(data)
 {
 	if ((last_five.length > 0) && (last_five[last_five.length - 1] == data))
 		return;
-	
+
 	last(data);
-	
-	firebase.database().ref("travelercon").set(data);
+
+	firebase.database().ref("travelercon").set(JSON.stringify({"current": data, "last_five": last_five}));
 }
 
 function populate_data(data)
 {
+	/* Populate ALL the data */
+	obj = JSON.parse(data);
+	last_five = obj["last_five"];
+
+	current = obj["current"];
+
 	$("#when").fadeOut("slow", "linear", function () {
-			$("#when").val(data);
+			$("#when").val(current);
 			$("#when").fadeIn("slow");
 		});
 }
@@ -44,13 +50,13 @@ function populate_data(data)
 function get()
 {
 	firebase.database().ref("travelercon").on("value", function (data) {
-		
+
 		/* Don't fade */
-		if (data.val() == $("#when").val())
+		if (data.val() == current)
 			return;
-		
-		last($("#when").val());
-		
+
+		last(current);
+
 		populate_data(data.val());
 	});
 }
@@ -73,12 +79,13 @@ var timerId = setInterval(function() {
 }, 10000);
 
 var last_five = [];
+var current = "";
 
 $(window).on('load', function() {
 	$("#submit").click(function (event) {
 		set($("#when").val());
 	});
-	
+
 	$('#when').keypress(function(event) {
 		var keycode = (event.keyCode ? event.keyCode : event.which);
 
@@ -86,8 +93,10 @@ $(window).on('load', function() {
 			set($("#when").val());
 		}
 	});
-	
+
 	firebase.database().ref("travelercon").on("value", function (data) {
 		populate_data(data.val());
+
+		last(current);
 	});
 });
