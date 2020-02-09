@@ -50,9 +50,8 @@ function populate_data(data)
 function get()
 {
 	firebase.database().ref("travelercon").on("value", function (data) {
-
 		/* Don't fade */
-		if (data.val() == current)
+		if (JSON.parse(data.val())["current"] == current)
 			return;
 
 		last(current);
